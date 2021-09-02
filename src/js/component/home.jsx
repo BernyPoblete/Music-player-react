@@ -41,6 +41,7 @@ function Home() {
 			audioPlayer.current.pause();
 		} else {
 			audioPlayer.current.play();
+			setIsPlaying(true);
 		}
 	};
 
