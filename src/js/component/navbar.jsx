@@ -7,7 +7,6 @@ function Navbar() {
 			<div className="fixed-top">
 				<nav className="navbar navbar-dark bg-dark"></nav>
 			</div>
-			este es mi navbar
 		</div>
 	);
 }

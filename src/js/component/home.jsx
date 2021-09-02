@@ -5,8 +5,8 @@ import Footer from "./footer.jsx";
 
 //create your first component
 function Home() {
-	let [currentSong, setCurrentSong] = useState(null);
 	let audioPlayer = useRef(null);
+	let [isPlaying, setIsPlaying] = useState(false);
 	const baseUrl = "https://assets.breatheco.de/apis/sound/";
 	const songs = [
 		{
@@ -32,13 +32,23 @@ function Home() {
 	const setSong = url => {
 		audioPlayer.current.src = baseUrl + url;
 		audioPlayer.current.play();
+		setIsPlaying(true);
+	};
+
+	const palancaPausePlay = e => {
+		if (isPlaying) {
+			setIsPlaying(!isPlaying);
+			audioPlayer.current.pause();
+		} else {
+			audioPlayer.current.play();
+		}
 	};
 
 	return (
 		<div className="container">
 			<Navbar />
 			<Playlist songsList={songs} setSong={setSong} />
-			<Footer />
+			<Footer isPlaying={isPlaying} palancaPausePlay={palancaPausePlay} />
 			<audio ref={audioPlayer} />
 		</div>
 	);
